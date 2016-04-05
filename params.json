@@ -1,0 +1,6 @@
+{
+  "name": "Kerwizzy.GitHub.io",
+  "tagline": "Live Demos of Code",
+  "body": "# Kerwizzy's LIVE Code Demos\r\n*Live Demos don't bite*\r\n\r\nTry out some live demos, such as:\r\n\r\n[HTML5 Fractal Renderer](kerwizzy.github.io/FractalRenderer.html)\r\n\r\n- Zoomings\r\n - Zoom in to 10,000,000,000,000,000 times magnification!\r\n - Easy to use interface\r\n- Many Fractals!\r\n - Mandelbrot Set\r\n - Burning Ship Fractal\r\n - Mandelbar\r\n- Fancy color palettes!\r\n - Royal, Frost, Fire, Grassland, and More!\r\n- Reusable!\r\n - Can change code to render lots of fractals\r\n\r\n## Gallery:\r\n\r\n![Deep Frost](kerwizzy.github.io/images/fractal_gallery/DeepFrost.png)\r\n![Fire](kerwizzy.github.io/images/fractal_gallery/Fire.png)\r\n![Midnight](kerwizzy.github.io/images/fractal_gallery/Midnight.png)\r\n\r\nCheck the spots out at:\r\n\r\n- -1.1867353097958038;0.3051225846247767;2.842170943040401e-16\r\n- -0.6916308586256493;0.3796930318059459;7.275957614183426e-14\r\n- -0.743643;0.131825;3e-8\r\n\r\n\r\n\r\n",
+  "note": "Don't delete this file! It's used internally to help with page regeneration."
+}
