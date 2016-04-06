@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <meta charset="UTF-8"> 
 <HEAD>
+
 <style>
 .show{
 position:fixed;
@@ -127,16 +128,18 @@ transition:opacity 1s
 
 }
 
+
+
 </style>
 
-
-<SCRIPT>
-/*
+<SCRIPT>/*
 ------------------
 JS FractalRenderer
 ------------------
 
-Made by Ambrose and Forrest Cavalier
+Made by Kerwizzy and his Father
+
+
 
 
 */
@@ -717,7 +720,33 @@ function getCursorPosition(canvas, event) {
 	draw();
 }
 
-</SCRIPT>
+
+
+function initialize() {
+	myCanvas = document.getElementById("myCanvas");
+
+	myCanvas.width = window.innerWidth; //Make it a full screen
+	myCanvas.height = window.innerHeight;
+	//alert(document.body.clientHeight);
+
+	myCanvas.addEventListener("mouseup",function(event) { if(event.button==0) getCursorPosition(myCanvas,event);});
+	work.ctx = myCanvas.getContext("2d");
+	work.imageData = work.ctx.createImageData(myCanvas.width,1) //Create an image for the row.
+
+	d = work.imageData.data;
+
+	document.getElementById("fractalPicker").value=0; //Make it actually SAY it's the mandelbrot set when it starts up. 
+	document.getElementById("colPicker").value=0; //Make it actually SAY it's the default color when it starts up.
+
+	draw() //Make it render when it starts.
+
+
+
+	//alert(inSet(-0.44249999999999995,0.6975));
+}
+
+window.addEventListener("load",initialize);</SCRIPT>
+
 </HEAD>
 
 <BODY style="font-family:arial;text-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);">
@@ -730,7 +759,7 @@ function getCursorPosition(canvas, event) {
 <strong style="font-size:30px;font-family:arial;text-shadow: 0 4px 4px rgba(0, 0, 0, 0.5);">Fractal Renderer</strong>
 
 <span style="margin-left:10px;margin-right:10px">
-By Ambrose Cavalier
+By Kerwizzy
 </span>
 Location:
 <input id=locationDisplay size=100>
@@ -741,7 +770,7 @@ Location:
 <option value="0">Mandelbrot Set</option>
 <option value="1">Burning Ship</option>
 <option value="2">Tricorn Mandelbrot</option>
-<option value="3">Julia</option>
+<!-- <option value="3">Julia</option> !-->
 </select> 
 
 
@@ -857,7 +886,7 @@ To learn more about the Burning Ship Fractal, take a look at the <a class="link"
 
 <div id=tab5 class="text_hide">
 <h3>About Fractal Renderer</h3>
-<p>Fractal Renderer was written by Ambrose Cavalier (13), with help from his father, Forrest Cavalier.</p>
+<p>Fractal Renderer was written by Kerwizzy (Age 13), with help from his father.</p>
 <p>He made it because he wanted to be able to explore other fractals that he had heard about, such as the Burning Ship fractal, and try seeing if he could find other fractals. </p>
 <p>He wrote the program and designed the page himself (with some techical help from his father). He made all the color palettes himself, too, using tools in <a class="link" href=https://www.blender.org/>Blender 3D</a>. (With some ideas for names from other renderers.)</p>
 <p>He is happy with the Fractal Renderer, but he thinks there are more improvements to be made!</p>
@@ -867,8 +896,10 @@ To learn more about the Burning Ship Fractal, take a look at the <a class="link"
 
 <button onclick="closeOptions()">Close Options</button>
 <br>
+<!--
 <input id=juliaC size=50>
 <button onclick="getJuliaC();">Update</button>
+!-->
 <br>
 <br>
 </div>
@@ -879,28 +910,8 @@ To learn more about the Burning Ship Fractal, take a look at the <a class="link"
 <canvas id="myCanvas" style="border:0px">
 Your browser does not support the HTML5 canvas tag.</canvas>
 </DIV>
-<SCRIPT>
-
-var myCanvas = document.getElementById("myCanvas");
-
-myCanvas.width = window.innerWidth; //Make it a full screen
-myCanvas.height = window.innerHeight;
-//alert(document.body.clientHeight);
-
-myCanvas.addEventListener("mouseup",function(event) { if(event.button==0) getCursorPosition(myCanvas,event);});
-work.ctx = myCanvas.getContext("2d");
-work.imageData = work.ctx.createImageData(myCanvas.width,1) //Create an image for the row.
-
-var d = work.imageData.data;
-
-document.getElementById("fractalPicker").value=0; //Make it actually SAY it's the mandelbrot set when it starts up. 
-document.getElementById("colPicker").value=0; //Make it actually SAY it's the default color when it starts up.
-
-draw() //Make it render when it starts.
 
 
 
-//alert(inSet(-0.44249999999999995,0.6975));
-</SCRIPT>
 
 </BODY>
