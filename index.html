@@ -182,40 +182,21 @@ footer {
 	<h3>So I'm looking at math?</h3>
 	<h5>The results of using some math!</h5>
 
-	<p>Here's how it works: in order to find the color for a location in the Mandelbrot Set, first we take the location and make it a number in the <a class="link" href=https://en.wikipedia.org/wiki/Complex_plane>complex plane</a>. We call this number “c”.</p>
-               <p>Then, we use the equation for the Mandelbrot Set that tells us, given a number in an interation sequence, and c, we can calculate the next value in the sequence.</p>
-               <p>So, basically, we calculate “sequences” of numbers for each location, using this equation:</p>
-               <p class="h5" style="font-family:serif">z<sub>n+1</sub> = z<sub>n</sub><sup>2</sup> + c</p>
-               <p>Where</p>
-               <ul>
-                  <li><b>c</b> is the complex number</li>
-                  <li><b>n</b> is what location in the sequence we are at.</li>
-                  <li><b>z<sub>n</sub></b> is the n<sup>th</sup> number in the sequence. (That is, the current number)</li>
-                  <li><b>z</b><sub>n+1</sub>is the n+1<sup>th</sup> number in the sequence. (That is, the next number.) </li>
-               </ul>
-               <p>So simply written, the equation is:</p>
-               <p class="h5"><i>Next number = previous number squared + location</i></p>
-               <p>We set the starting number to 0, and then we can calculate sequences. These sequences allow us to figure out how to color things.</p>
-               <p>Here's how that works. Suppose we wanted to find the color at 1,0 (x =1, y=0). We would turn that into a complex number. (1+0i, or just 1.) and make that c.</p>
-               <p>Then we would place that into the equation, setting z0 = 0 and get:</p>
-               <p class="h5" style="font-family:serif">z<sub>1</sub> = 0<sup>2</sup> + 1 = 1.</p>
-               <p>So z<sub>1</sub> = 1</p>
-               <p>Then we would place that in the equation again and get:</p>
-               <p class="h5" style="font-family:serif">z<sub>2</sub> = 1<sup>2</sup> + 1 = 2</p>
-               <p>And find that for c = 1, z<sub>2</sub> = 2.</p>
-               <p>Continuing this process would produce the sequence:</p>
-               <p class="h6"><i>0, 1, 2, 5, 26…</i></p>
-               <p>Which would get larger and larger indefinitely. </p>
-               <p>Now here's how we find the colors. The Mandelbrot “set” is defined to be all the locations (values of c) that produce a sequence that does <b>not</b> get larger and larger. Usually, all the numbers in the set are colored black. But how do we find the color of something that is not in the set?</p>
-               <p>Let's go back to our example of c = 1. If the number gets larger than a limit value (usually 2) then we  stop “iterating”, (that is, calculating more values in the sequence) the number. Then we find the count how many iterations it took for the number to “escape”, or get larger than the limit.</p>
-               <p>So since setting c = 1 took 2 iterations to go beyond the limit, we would color that location what ever color corresponds to “2” in the color palette we're using.</p>
-               Now what about numbers that <b>don't</b> go beyond the limit, and are in the set? How do we even know they won't go beyond the limit, if we only keep iterating them? This is actually a hard problem! Some numbers would be very easy to tell. For example, setting c = -1 gives the sequence:</p>
-               <p class="h6"><i>0, -1, 0, -1, 0...</i></p>
-               </p>
-               <p>Since this obviously repeats, and does not ever go beyond 2, then it is in the set, and just needs to be colored black. But some numbers may not repeat. In fact, what most programs (including this one) do in order to find if something is “in the set”, simply keep on running the iteration function for a fixed number of iterations. (The default for Fractal Renderer is 30,000. It can be changed by the user, though.) If the number does not “escape”, that is, go over the limit, by the end, then it decides it is in the set, and colors that location black.</p>
-               <p>Not having enough iterations can be a problem, though. For instance, try reducing the number of iterations to 10, or 100. See how the image changes. In some places, 30,000, or ever 100,000 iterations isn't even enough to display the set perfectly! It can be a problem that there is no definite way to say if something is “in” the set (unless it repeates).</p>
-               <p>To learn more about the Mandelbrot Set, take a look at the <a class="link" href=https://en.wikipedia.org/wiki/Mandelbrot_set>Wikipedia Article</a>!</p>
-	
+	<p>Here's how it works. First, for each pixel in the image, we generate a sequence of numbers. We generate this sequence by using a mathematical equation. Each fractal has its own unique equation.</p>
+	<p>Let's see how to generate a sequence of numbers for a pixel in the Mandelbrot Set. First we take the equation. For the Mandelbrot Set, this is:</p>
+	<p class="h6">next number in sequence = previous number squared + location of pixel as a number</p>
+	<p>(or at least, thats the simple way of writing it. Mathematicians write it like this: z<sub>n+1</sub> = z<sup>2</sup> + c)</p>
+	<p>Pretty simple, right? Let's try applying it. Suppose we had a pixel whose location corresponded to the number 1. Since we don't have a previous number, we set the "previous number" part of the equation to 0. So now we have:</p>
+	<p class="h6">next number in sequence = 0<sup>2</sup> + 1</p>
+	<p>Now we can just find the next number in the sequence. (Its 1). If we keep on applying this formula, we get the sequence:</p>
+	<p><i>1, 2, 5, 26…</i></p>
+	<p>The numbers will get bigger and bigger as we keep on running the equation. But so what? How does this help us get pretty pictures?</p>
+	<p>Here's how: We count how long it took for the numbers in the sequence to get larger than 2. So in this case, the result of doing that would be 2. Then we display the color that corresponds to the number. It's that simple.</p>
+	<h3>But what about areas that are black? Are those special?</h3>
+	<p>They ARE special! There are some numbers whose sequences NEVER get larger than 2. For example, the sequence for -1 is:</p>
+	<p><i>-1, 0, -1, 0…</i></p>
+	<p>Since this sequence repeates forever, it never gets larger than 2. These numbers are "inside the set" and we color them black.</p>
+	<p>If you'd like to know more about the Mandelbrot Set and other fractals, (and there's a lot more to learn!) check out the <a class="link" href=https://en.wikipedia.org/wiki/Mandelbrot_set>Wikipedia Article</a></p>
 
 	<h3>What does Fractal Renderer do?</h3>
 	<h5>Lots of things!</h5>
