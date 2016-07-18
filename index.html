@@ -24,61 +24,243 @@
 
 <!-- Latest compiled and minified JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+
+<script>
+$(function() {
+  $('a[href*="#"]:not([href="#"])').click(function() {
+    if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
+      var target = $(this.hash);
+      target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
+      if (target.length) {
+        $('html, body').animate({
+          scrollTop: target.offset().top
+        }, 700);
+        return false;
+      }
+    }
+  });
+});
+</script>
+
+<style>
+/*
+ * Start Bootstrap - Full Slider (http://startbootstrap.com/)
+ * Copyright 2013-2016 Start Bootstrap
+ * Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap/blob/gh-pages/LICENSE)
+ */
+
+html,
+body {
+    height: 100%;
+}
+
+.carousel,
+.item,
+.active {
+    height: 100%;
+}
+
+.carousel-inner {
+    height: 100%;
+}
+
+/* Background images are set within the HTML using inline CSS, not here */
+
+.fill {
+    width: 100%;
+    height: 100%;
+    background-position: center;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover;
+}
+
+footer {
+    margin: 50px 0;
+}
+</style>
+
+
 </HEAD>
 <BODY>
-<div class="container">
-<div class="row">
-<h1 style="font-size:40px">Kerwizzy's Programming Lab</h1>
 
-</div>
-<div class="jumbotron">
-  <h1>Fractal Renderer</h1>
-  <p>Experience the beauty of fractals in your browser.</p>
-  <p><a class="btn btn-success btn-lg" href="https://kerwizzy.github.io/HTML5-Fractal-Renderer/FractalRenderer.html" role="button">Try It!</a></p>
-</div>
-<div class="row">
-<div class="col-md-12">
-<h2>What are Fractals?</h2>
+    <!-- Navigation -->
+	<nav class="navbar navbar-default navbar-fixed-top">
+	<div class="container-fluid">
+	
+	<!-- Brand and toggle get grouped for better mobile display -->
+	<div class="navbar-header">
+	  <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+		<span class="sr-only">Toggle navigation</span>
+		<span class="icon-bar"></span>
+		<span class="icon-bar"></span>
+		<span class="icon-bar"></span>
+	  </button>
+	  <h4 class="navbar-brand">Kerwizzy's Programming Lab</h4>
+	</div>
+
+	<!-- Collect the nav links, forms, and other content for toggling -->
+	<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+	  <ul class="nav navbar-nav">
+		<li><a href="#top" class="h5">Home<span class="sr-only">(current)</span></a></li>
+		<li><a href="#fractal" class="h5">Fractal Renderer</a></li>
+	  </ul>	 
+	</div><!-- /.navbar-collapse -->
+	
+	</div><!-- /.container-fluid -->
+	</nav>
+	
+	
+    <!-- Full Page Image Background Carousel Header -->
+    <header id="myCarousel" class="carousel slide" data-pause="false">
+		<a name="top"></a>
+		<div class="carousel-inner" role="listbox">
+			<div class="item active">
+				<img src="file:///C:/ambrose/JavaScript/Mandelbrot%20Renders/Fullscreen/DeepFrost2.png" alt="Deep Frost">
+				<div class="carousel-caption">
+					<h4>Frozen Fractals</h4>
+					<p>Explore icy wonderlands in <a href="#fractal">Fractal Renderer</a>.</p>
+				</div>
+			</div>
+			<div class="item">
+				<img src="file:///C:/ambrose/JavaScript/Mandelbrot%20Renders/Fullscreen/Fire.png" alt="Fire">
+				<div class="carousel-caption">
+					<h4>Ash and Flame</h4>
+					<p>Firey Julia Islands in <a href="#fractal">Fractal Renderer</a>.</p>
+				</div>
+			</div>
+			<div class="item">
+				<img src="file:///C:/ambrose/JavaScript/Mandelbrot%20Renders/Fullscreen/Midnight2.png" alt="Fire">
+				<div class="carousel-caption">
+					<h4>Galactic Spirals</h4>
+					<p>Midnight swirls magnified by <a href="#fractal">Fractal Renderer</a>.</p>
+				</div>
+			</div>
+			<div class="item">
+				<img src="file:///C:/ambrose/JavaScript/Mandelbrot%20Renders/Fullscreen/Desert2.png" alt="Fire">
+				<div class="carousel-caption">
+					<h4>Rich and Sandy</h4>
+					<p>Rich sandstone and hot sand in the desert of <a href="#fractal">Fractal Renderer</a>.</p>
+				</div>
+			</div>
+			<div class="item">
+				<img src="file:///C:/ambrose/JavaScript/Mandelbrot%20Renders/Fullscreen/Tropical4.png" alt="Fire">
+				<div class="carousel-caption">
+					<h4>Tropical Islands</h4>
+					<p><a href="#fractal">Fractal Renderer</a> can take you on a cruise through warm fractal waters.</p>
+				</div>
+			</div>
+			<div class="item">
+				<img src="file:///C:/ambrose/JavaScript/Mandelbrot%20Renders/Fullscreen/Grassland2.png" alt="Fire">
+				<div class="carousel-caption">
+					<h4>Rolling Plains</h4>
+					<p>Ride <a href="#fractal">Fractal Renderer</a> over endless grasslands.</p>
+				</div>
+			</div>
+		</div>
+    </header>
+
+    <!-- Page Content -->
+	<a name="fractal"></a>
+    <div class="container" style="margin-top:20px">
+
+		<div class="jumbotron">
+		<h1>Fractal Renderer</h1>
+		<p>Experience the beauty of fractals in your browser.</p>
+		<p><a class="btn btn-success btn-lg" href="https://kerwizzy.github.io/HTML5-Fractal-Renderer/FractalRenderer.html" role="button">Try It!</a></p>
+		</div>
+	
+	<div class="row">
+	<div class="col-md-8">
+	<h3>What are Fractals?</h3>
+	<h5>Look above and see for yourself!</h5>
 
 
+	<p>Fractals are infinitely complex patterns created by mathematical equations. One of their interesting aspects is that larger patterns often repeate themselves at smaller scales.</p>
+	
+	<h3>So I'm looking at math?</h3>
+	<h5>The results of using some math!</h5>
 
-<h3>See for yourself!</h3>
+	<p>Here's how it works: in order to find the color for a location in the Mandelbrot Set, first we take the location and make it a number in the <a class="link" href=https://en.wikipedia.org/wiki/Complex_plane>complex plane</a>. We call this number “c”.</p>
+               <p>Then, we use the equation for the Mandelbrot Set that tells us, given a number in an interation sequence, and c, we can calculate the next value in the sequence.</p>
+               <p>So, basically, we calculate “sequences” of numbers for each location, using this equation:</p>
+               <p class="h5" style="font-family:serif">z<sub>n+1</sub> = z<sub>n</sub><sup>2</sup> + c</p>
+               <p>Where</p>
+               <ul>
+                  <li><b>c</b> is the complex number</li>
+                  <li><b>n</b> is what location in the sequence we are at.</li>
+                  <li><b>z<sub>n</sub></b> is the n<sup>th</sup> number in the sequence. (That is, the current number)</li>
+                  <li><b>z</b><sub>n+1</sub>is the n+1<sup>th</sup> number in the sequence. (That is, the next number.) </li>
+               </ul>
+               <p>So simply written, the equation is:</p>
+               <p class="h5"><i>Next number = previous number squared + location</i></p>
+               <p>We set the starting number to 0, and then we can calculate sequences. These sequences allow us to figure out how to color things.</p>
+               <p>Here's how that works. Suppose we wanted to find the color at 1,0 (x =1, y=0). We would turn that into a complex number. (1+0i, or just 1.) and make that c.</p>
+               <p>Then we would place that into the equation, setting z0 = 0 and get:</p>
+               <p class="h5" style="font-family:serif">z<sub>1</sub> = 0<sup>2</sup> + 1 = 1.</p>
+               <p>So z<sub>1</sub> = 1</p>
+               <p>Then we would place that in the equation again and get:</p>
+               <p class="h5" style="font-family:serif">z<sub>2</sub> = 1<sup>2</sup> + 1 = 2</p>
+               <p>And find that for c = 1, z<sub>2</sub> = 2.</p>
+               <p>Continuing this process would produce the sequence:</p>
+               <p class="h6"><i>0, 1, 2, 5, 26…</i></p>
+               <p>Which would get larger and larger indefinitely. </p>
+               <p>Now here's how we find the colors. The Mandelbrot “set” is defined to be all the locations (values of c) that produce a sequence that does <b>not</b> get larger and larger. Usually, all the numbers in the set are colored black. But how do we find the color of something that is not in the set?</p>
+               <p>Let's go back to our example of c = 1. If the number gets larger than a limit value (usually 2) then we  stop “iterating”, (that is, calculating more values in the sequence) the number. Then we find the count how many iterations it took for the number to “escape”, or get larger than the limit.</p>
+               <p>So since setting c = 1 took 2 iterations to go beyond the limit, we would color that location what ever color corresponds to “2” in the color palette we're using.</p>
+               Now what about numbers that <b>don't</b> go beyond the limit, and are in the set? How do we even know they won't go beyond the limit, if we only keep iterating them? This is actually a hard problem! Some numbers would be very easy to tell. For example, setting c = -1 gives the sequence:</p>
+               <p class="h6"><i>0, -1, 0, -1, 0...</i></p>
+               </p>
+               <p>Since this obviously repeats, and does not ever go beyond 2, then it is in the set, and just needs to be colored black. But some numbers may not repeat. In fact, what most programs (including this one) do in order to find if something is “in the set”, simply keep on running the iteration function for a fixed number of iterations. (The default for Fractal Renderer is 30,000. It can be changed by the user, though.) If the number does not “escape”, that is, go over the limit, by the end, then it decides it is in the set, and colors that location black.</p>
+               <p>Not having enough iterations can be a problem, though. For instance, try reducing the number of iterations to 10, or 100. See how the image changes. In some places, 30,000, or ever 100,000 iterations isn't even enough to display the set perfectly! It can be a problem that there is no definite way to say if something is “in” the set (unless it repeates).</p>
+               <p>To learn more about the Mandelbrot Set, take a look at the <a class="link" href=https://en.wikipedia.org/wiki/Mandelbrot_set>Wikipedia Article</a>!</p>
+	
 
+	<h3>What does Fractal Renderer do?</h3>
+	<h5>Lots of things!</h5>
 
-<div class="row">
-<div class="col-md-4"><img src="https://kerwizzy.github.io/images/fractal_gallery/DeepFrost.png" class="img-responsive img-rounded" alt="Deep Frost" style="margin-bottom:20px;display:inline"></div>
+	<ul>
+	<li>It can render fractals in lots of pretty colors!</li>
+	<li>You can zoom in to 10,000,000,000,000,000 times magnification!</li>
+	<li>It allows you to view and explore a bunch of famous fractals such as the Mandelbrot Set and the Burning Ship Fractal!</li>
+	<li>You can also even do advanced stuff like changing the exponent of a fractal!</li>
+	</ul>
 
+	<h3>So what are you waiting for?</h3>
+	<a class="btn btn-success btn-lg" href="https://kerwizzy.github.io/HTML5-Fractal-Renderer/FractalRenderer.html" role="button">Try it out!</a></p>
+	</div>
+	</div>
+		
+		
+		
+		
+		
+        <hr>
 
-<div class="col-md-4"><img src="https://kerwizzy.github.io/images/fractal_gallery/Fire.png" class="img-responsive img-rounded" alt="Fire" style="margin-bottom:20px;;display:inline"></div>
+        <!-- Footer -->
+        <footer>
+            <div class="row">
+                <div class="col-lg-12">
+                    <p>Page designed by Kerwizzy using Cyborg theme from <a class="link" href=https://bootswatch.com/.>Bootswatch</a> (Created by Thomas Park)</p>
+					<p>Page template from <a class="link" href=http://startbootstrap.com/> Start Bootstrap </a>.
+                </div>
+            </div>
+            <!-- /.row -->
+        </footer>
 
+    </div>
+    
 
-<div class="col-md-4"><img src="https://kerwizzy.github.io/images/fractal_gallery/Midnight.png" class="img-responsive img-rounded" alt="Midnight" style="margin-bottom:20px;display:inline"></div>
-</div>
-
-
-<p class="h5">Fractals are infinitely complex patterns created by mathematical equations.</p>
-
-
-
-
-
-
-<h2>What does Fractal Renderer do?</h2>
-
-<h3>Lots of things!</h3>
-
-<ul>
-<li class="h5">It can render fractals in lots of pretty colors!</li>
-<li class="h5">It allows you to view and explore a bunch of famous fractals such as the Mandelbrot Set and the Burning Ship Fractal!</li>
-<li class="h5">You can also even do advanced stuff like changing the exponent of a fractal!</li>
-</ul>
-
-<h3>So what are you waiting for?</h3>
-<a class="btn btn-success btn-lg" href="https://kerwizzy.github.io/HTML5-Fractal-Renderer/FractalRenderer.html" role="button">Try it out!</a></p>
-
-
-
-</div>
-
+    <!-- Script to Activate the Carousel -->
+    <script>
+    $('.carousel').carousel({
+        interval: 3000 //changes the speed
+    })
+	
+	
+    </script>
 
 </BODY>
+
+
